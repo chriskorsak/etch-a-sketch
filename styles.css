@@ -7,9 +7,20 @@
 #easContainer {
   display: flex;
   flex-wrap: wrap;
-  width: 467px;
+  width: 40%;
 }
 
 .square {
   border: 1px solid black;
+}
+
+@media screen and (max-width: 992px) {
+  #easContainer {
+    width: 70%;
+  }  
+}
+@media screen and (max-width: 768px) {
+  #easContainer {
+    width: 90%;
+  }  
 }

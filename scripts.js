@@ -3,14 +3,12 @@ const easContainerDiv = document.getElementById('easContainer');
 
 //eascontainerDiv width calculated from css width
 const containerWidth = easContainerDiv.offsetWidth;
-console.log(containerWidth);
 
 //squares per side
-const squaresPerSide = 24;
+const squaresPerSide = 3;
 
-//width of each square. container is 960px;
-const squareWidth = containerWidth / squaresPerSide;
-console.log(squareWidth);
+//width of each square
+const squareWidth = Math.floor(containerWidth / squaresPerSide);
 
 //generate squares and add to container
 for (let i = 0; i < squaresPerSide**2; i++) {
