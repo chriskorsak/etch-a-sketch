@@ -24,7 +24,7 @@ main {
 }
 
 .square {
-  background-color: teal;
+  background-color: #ddd;
 }
 
 @media screen and (max-width: 992px) {
