@@ -29,6 +29,14 @@ div.buttons,
 
 button {
   min-width: 3rem;
+  padding: 5px;
+  border: solid 1px #2d2d2d;
+  border-radius: 3px;
+}
+
+button.buttonClicked {
+  background-color: #2d2d2d;
+  color: #fff;
 }
 
 /* this is the etch a sketch screen that holds all of the square div 'pixels' */
@@ -49,7 +57,7 @@ button {
   transition: background-color .25s;
 }
 
-.squareChangeColor {
+.squareDarkColor {
   background-color: #3d3d3d;
 }
 

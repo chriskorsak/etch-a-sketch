@@ -2,19 +2,22 @@
 const easContainerDiv = document.getElementById('easContainer');
 const resolutionInput = document.getElementById('resolution');
 const resolutionValueSpan = document.getElementById('resolutionValue');
+const buttons = document.querySelectorAll('.drawingTool');
 const clearButton = document.getElementById('clear');
 
 //run resolution function for intial page display with default slider value
 resolution(resolutionInput.value);
 
+easContainerDiv.addEventListener('mouseover', darkColor);
 
 //EVENT LISTENERS
-// //add event listener to entire container div for square color change when drawing
-// easContainerDiv.addEventListener('touchend', changeColor);
-//add event listener to entire container div for square color change when drawing
-easContainerDiv.addEventListener('mouseover', changeColor);
 
-// add touchup event for resolution button slider (mobile/touch devices)
+//add click events to drawing tool buttons (not clear button)
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('click', drawingTool);
+}
+
+// add touchup event for resolution slider (mobile/touch devices)
 resolutionInput.addEventListener('touchend', function(e) {
   //run resolution function with input range slider value
   resolution(e.target.value);
@@ -22,7 +25,7 @@ resolutionInput.addEventListener('touchend', function(e) {
   resolutionValueSpan.textContent = e.target.value;
 })
 
-// add mouseup event for resolution button slider (desktop)
+// add mouseup event for resolution slider (desktop)
 resolutionInput.addEventListener('mouseup', function(e) {
   //run resolution function with input range slider value
   resolution(e.target.value);
@@ -53,18 +56,45 @@ function resolution(dimension) {
   }
 }
 
-function changeColor(e) {
+function drawingTool(e) {
+  // remove button clicked css class to all buttons
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove('buttonClicked');
+  }
+  // add button clicked css class to target button
+  e.target.classList.add('buttonClicked');
+
+  if (e.target.id === 'dark') {
+    //add event listener to entire container div for square color change when drawing
+    easContainerDiv.addEventListener('mouseover', darkColor);
+    easContainerDiv.removeEventListener('mouseover', eraser);
+  }
+  if (e.target.id === 'eraser') {
+    //add event listener to entire container div for square color change when drawing
+    easContainerDiv.addEventListener('mouseover', eraser);
+    easContainerDiv.removeEventListener('mouseover', darkColor);
+  }
+}
+
+function darkColor(e) {
   //if target is not the container div...only the squares
-  if (e.target.id != 'easContainer')
-  // e.target.style.backgroundColor = 'teal';
-  e.target.classList.add('squareChangeColor');
+  if (e.target.id != 'easContainer') {
+    e.target.classList.add('squareDarkColor');
+  }
+}
+
+function eraser(e) {
+  //if target is not the container div...only the squares
+  if (e.target.id != 'easContainer') {
+    e.target.classList.remove('squareDarkColor');
+  }
 }
 
 function clear() {
   //get all colored squares
-  const coloredSquares = document.querySelectorAll('.squareChangeColor');
+  const coloredSquares = document.querySelectorAll('.squareDarkColor');
   for (let i = 0; i < coloredSquares.length; i++) {
     //remove colored box class
-    coloredSquares[i].classList.remove('squareChangeColor');
+    coloredSquares[i].classList.remove('squareDarkColor');
   }
 }
