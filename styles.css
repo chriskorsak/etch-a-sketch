@@ -14,7 +14,6 @@ header {
   color: #fff;
   text-align: center;
   padding: 1rem;
-  /* margin-bottom: 2rem; */
 }
 
 main {
@@ -23,7 +22,8 @@ main {
   flex-direction: column;
 }
 
-div.buttons {
+div.buttons,
+#resolutionControls {
   padding: 10px;
 }
 
@@ -31,7 +31,7 @@ button {
   min-width: 3rem;
 }
 
-/* this holds all of the square div 'pixels' */
+/* this is the etch a sketch screen that holds all of the square div 'pixels' */
 #easContainer {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
@@ -53,15 +53,24 @@ button {
   background-color: #3d3d3d;
 }
 
-@media screen and (max-width: 992px) {
+/* media queries */
+@media screen and (max-width: 1000px) {
+  #easContainer {
+    width: 50vw;
+    height: 50vw;
+  }  
+}
+@media screen and (max-width: 750px) {
   #easContainer {
     width: 60vw;
     height: 60vw;
+    border-width: 40px;
   }  
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
   #easContainer {
-    width: 90vw;
-  height: 90vw;
+    width: 80vw;
+    height: 80vw;
+    border-width: 30px;
   }  
 }
