@@ -1,7 +1,11 @@
 //DOM VARIABLES
 const easContainerDiv = document.getElementById('easContainer');
 const resolutionInput = document.getElementById('resolution');
+const resolutionValueSpan = document.getElementById('resolutionValue');
 const clearButton = document.getElementById('clear');
+
+//run resolution function for intial page display with default slider value
+resolution(resolutionInput.value);
 
 
 //EVENT LISTENERS
@@ -12,6 +16,8 @@ easContainerDiv.addEventListener('mouseover', changeColor);
 resolutionInput.addEventListener('mouseup', function(e) {
   //run resolution function with input range slider value
   resolution(e.target.value);
+  //update resolution value span readout
+  resolutionValueSpan.textContent = e.target.value;
 })
 
 
