@@ -24,5 +24,6 @@ easContainerDiv.addEventListener('mouseover', changeColor);
 function changeColor(e) {
   //if target is not the container div...only the squares
   if (e.target.id != 'easContainer')
-  e.target.style.backgroundColor = 'teal';
+  // e.target.style.backgroundColor = 'teal';
+  e.target.classList.add('squareChangeColor');
 }

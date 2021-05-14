@@ -22,6 +22,7 @@ main {
   justify-content: center;
 }
 
+/* this holds all of the square div 'pixels' */
 #easContainer {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
@@ -33,8 +34,14 @@ main {
   border-radius: 15px;
 }
 
+/* square 'pixels' */
 .square {
   background-color: #ddd;
+  transition: background-color .25s;
+}
+
+.squareChangeColor {
+  background-color: teal;
 }
 
 @media screen and (max-width: 992px) {
