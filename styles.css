@@ -2,11 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  font-size: 16px;
 }
 
 header {
-  background-color: bisque;
+  background-color: teal;
+  color: #fff;
   text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 main {
@@ -21,6 +29,8 @@ main {
   width: 40vw;
   height: 40vw;
   gap: 1px;
+  border: 50px solid red;
+  border-radius: 15px;
 }
 
 .square {
