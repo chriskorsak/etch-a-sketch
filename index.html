@@ -12,13 +12,10 @@
     <h1>Etch-A-Sketch</h1>
   </header>
   <main>
-    <div id="resolution" class="buttons">
-      <span>Resolution:</span>
-      <button data-resolution='4'>4</button>
-      <button data-resolution='8'>8</button>
-      <button data-resolution='16'>16</button>
-      <button data-resolution='32'>32</button>
-      <button data-resolution='64'>64</button>
+    <div id="resolutionControls">
+      <input type="range" id="resolution" name="square" 
+             min="4" max="64" value="16" step="4">
+      <label for="square">Resolution</label>
     </div>
     <div class="buttons">
       <button id='clear'>Clear</button>

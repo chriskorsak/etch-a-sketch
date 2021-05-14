@@ -1,16 +1,18 @@
 //DOM VARIABLES
 const easContainerDiv = document.getElementById('easContainer');
-const resolutionButtons = document.querySelectorAll('button[data-resolution]');
+const resolutionInput = document.getElementById('resolution');
 const clearButton = document.getElementById('clear');
 
 
 //EVENT LISTENERS
-//add event listener to entire container div
+//add event listener to entire container div for square color change when drawing
 easContainerDiv.addEventListener('mouseover', changeColor);
 
-//resolution buttons
-// add click event for each resolution button
-// run resolution function with data from button as the resolution argument
+// add mouseup event for resolution button slider
+resolutionInput.addEventListener('mouseup', function(e) {
+  //run resolution function with input range slider value
+  resolution(e.target.value);
+})
 
 
 function resolution(dimension) {
