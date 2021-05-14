@@ -9,10 +9,20 @@ resolution(resolutionInput.value);
 
 
 //EVENT LISTENERS
+// //add event listener to entire container div for square color change when drawing
+// easContainerDiv.addEventListener('touchend', changeColor);
 //add event listener to entire container div for square color change when drawing
 easContainerDiv.addEventListener('mouseover', changeColor);
 
-// add mouseup event for resolution button slider
+// add touchup event for resolution button slider (mobile/touch devices)
+resolutionInput.addEventListener('touchend', function(e) {
+  //run resolution function with input range slider value
+  resolution(e.target.value);
+  //update resolution value span readout
+  resolutionValueSpan.textContent = e.target.value;
+})
+
+// add mouseup event for resolution button slider (desktop)
 resolutionInput.addEventListener('mouseup', function(e) {
   //run resolution function with input range slider value
   resolution(e.target.value);
