@@ -20,6 +20,9 @@ resolutionInput.addEventListener('mouseup', function(e) {
   resolutionValueSpan.textContent = e.target.value;
 })
 
+// add click event when clearing etch a sketch
+clearButton.addEventListener('click', clear);
+
 
 function resolution(dimension) {
   //clear out container div squares
@@ -45,4 +48,13 @@ function changeColor(e) {
   if (e.target.id != 'easContainer')
   // e.target.style.backgroundColor = 'teal';
   e.target.classList.add('squareChangeColor');
+}
+
+function clear() {
+  //get all colored squares
+  const coloredSquares = document.querySelectorAll('.squareChangeColor');
+  for (let i = 0; i < coloredSquares.length; i++) {
+    //remove colored box class
+    coloredSquares[i].classList.remove('squareChangeColor');
+  }
 }
