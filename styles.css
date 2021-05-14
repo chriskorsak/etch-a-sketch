@@ -10,7 +10,7 @@ body {
 }
 
 header {
-  background-color: teal;
+  background-color: #2d2d2d;
   color: #fff;
   text-align: center;
   padding: 1rem;
@@ -41,7 +41,7 @@ main {
 }
 
 .squareChangeColor {
-  background-color: teal;
+  background-color: #3d3d3d;
 }
 
 @media screen and (max-width: 992px) {
