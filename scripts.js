@@ -8,11 +8,12 @@ const clearButton = document.getElementById('clear');
 //run resolution function for intial page display with default slider value
 resolution(resolutionInput.value);
 
+// make dark drawing tool load by default
 easContainerDiv.addEventListener('mouseover', darkColor);
 
 //EVENT LISTENERS
 
-//add click events to drawing tool buttons (not clear button)
+//add click events to drawing tool buttons (dark, shade, and eraser buttons)
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', drawingTool);
 }
@@ -35,7 +36,6 @@ resolutionInput.addEventListener('mouseup', function(e) {
 
 // add click event when clearing etch a sketch
 clearButton.addEventListener('click', clear);
-
 
 function resolution(dimension) {
   //clear out container div squares
@@ -85,21 +85,21 @@ function drawingTool(e) {
 function darkColor(e) {
   //if target is not the container div...only the squares
   if (e.target.id != 'easContainer') {
-    e.target.classList.add('squareDarkColor');
+    e.target.style.backgroundColor = '#3d3d3d';
   }
 }
 
 function shade(e) {
   //if target is not the container div...only the squares
   if (e.target.id != 'easContainer') {
+    //if no inline background color styles, add one
     if (e.target.style.backgroundColor === "") {
       e.target.style.backgroundColor = "rgb(210, 210, 210)";
+      //once there is inline bg color style, decrement by 10 each time if mouse over event
     } else {
       //get middle, aka green rgb value with string split
       let backgroundColor = e.target.style.backgroundColor.split(', ');
-      console.log(backgroundColor);
       let rgb = Number(backgroundColor[1]);
-      console.log(rgb)
       // lower rgb value by 10
       rgb-=10;
       e.target.style.backgroundColor = `rgb(${rgb}, ${rgb}, ${rgb})`;
@@ -110,16 +110,13 @@ function shade(e) {
 function eraser(e) {
   //if target is not the container div...only the squares
   if (e.target.id != 'easContainer') {
-    e.target.classList.remove('squareDarkColor', 'squareShadeColor');
     e.target.style.backgroundColor = '';
   }
 }
 
 function clear() {
-  //get all colored squares
-  const coloredSquares = document.querySelectorAll('.squareDarkColor, .squareShadeColor');
-  for (let i = 0; i < coloredSquares.length; i++) {
-    //remove colored box class
-    coloredSquares[i].classList.remove('squareDarkColor', 'squareShadeColor');
+  const squares = document.querySelectorAll('.square');
+  for (let i = 0; i < squares.length; i++) {
+    squares[i].style.backgroundColor = '';
   }
 }
