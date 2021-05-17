@@ -61,6 +61,11 @@ button.buttonClicked {
   background-color: #3d3d3d;
 }
 
+/* .squareShadeColor {
+  background-color: teal;
+  opacity: .2;
+} */
+
 /* media queries */
 @media screen and (max-width: 1000px) {
   #easContainer {

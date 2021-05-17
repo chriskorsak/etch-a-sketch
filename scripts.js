@@ -1,7 +1,7 @@
 //DOM VARIABLES
 const easContainerDiv = document.getElementById('easContainer');
-const resolutionInput = document.getElementById('resolution');
-const resolutionValueSpan = document.getElementById('resolutionValue');
+const resolutionInput = document.getElementById('resolution'); //slider
+const resolutionValueSpan = document.getElementById('resolutionValue'); //resolution display
 const buttons = document.querySelectorAll('.drawingTool');
 const clearButton = document.getElementById('clear');
 
@@ -67,12 +67,18 @@ function drawingTool(e) {
   if (e.target.id === 'dark') {
     //add event listener to entire container div for square color change when drawing
     easContainerDiv.addEventListener('mouseover', darkColor);
+    easContainerDiv.removeEventListener('mouseover', shade);
     easContainerDiv.removeEventListener('mouseover', eraser);
   }
+  if (e.target.id === 'shade') {
+    easContainerDiv.addEventListener('mouseover', shade);
+    easContainerDiv.removeEventListener('mouseover', eraser);
+    easContainerDiv.removeEventListener('mouseover', darkColor);
+  }
   if (e.target.id === 'eraser') {
-    //add event listener to entire container div for square color change when drawing
     easContainerDiv.addEventListener('mouseover', eraser);
     easContainerDiv.removeEventListener('mouseover', darkColor);
+    easContainerDiv.removeEventListener('mouseover', shade);
   }
 }
 
@@ -83,18 +89,37 @@ function darkColor(e) {
   }
 }
 
+function shade(e) {
+  //if target is not the container div...only the squares
+  if (e.target.id != 'easContainer') {
+    if (e.target.style.backgroundColor === "") {
+      e.target.style.backgroundColor = "rgb(210, 210, 210)";
+    } else {
+      //get middle, aka green rgb value with string split
+      let backgroundColor = e.target.style.backgroundColor.split(', ');
+      console.log(backgroundColor);
+      let rgb = Number(backgroundColor[1]);
+      console.log(rgb)
+      // lower rgb value by 10
+      rgb-=10;
+      e.target.style.backgroundColor = `rgb(${rgb}, ${rgb}, ${rgb})`;
+    }
+  }
+}
+
 function eraser(e) {
   //if target is not the container div...only the squares
   if (e.target.id != 'easContainer') {
-    e.target.classList.remove('squareDarkColor');
+    e.target.classList.remove('squareDarkColor', 'squareShadeColor');
+    e.target.style.backgroundColor = '';
   }
 }
 
 function clear() {
   //get all colored squares
-  const coloredSquares = document.querySelectorAll('.squareDarkColor');
+  const coloredSquares = document.querySelectorAll('.squareDarkColor, .squareShadeColor');
   for (let i = 0; i < coloredSquares.length; i++) {
     //remove colored box class
-    coloredSquares[i].classList.remove('squareDarkColor');
+    coloredSquares[i].classList.remove('squareDarkColor', 'squareShadeColor');
   }
 }
