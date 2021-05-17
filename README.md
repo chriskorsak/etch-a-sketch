@@ -9,6 +9,8 @@
 
 This Etch-A-Sketch application was a really fun project from [The Odin Project](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/etch-a-sketch-project) Javascript Foundations course. It's a good exercise in what you can achieve with Document Object Model manipulation. In addition to the basic functionality of a classic Etch-A-Sketch toy, It also adds a couple cool behaviors that would be welcome with any person who has _actually used_ a real Etch-A-Sketch.
 
+<img src="images/etch-a-sketch.jpg">
+
 ### Features
 * Ability to set canvas resolution (4-64 squares per side)
 * Single tone drawing tool
